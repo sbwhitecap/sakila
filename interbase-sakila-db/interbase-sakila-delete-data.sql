@@ -11,9 +11,11 @@ http://www.etl-tools.com
 */
 
 -- Delete data
-�lTER TABLE staff DROP CONSTRAINT fk_staff_address;
+AlTER TABLE staff DROP CONSTRAINT fk_staff_address;
 AlTER TABLE staff DROP CONSTRAINT fk_staff_store;
 ALTER TABLE store DROP CONSTRAINT fk_store_staff;
+
+COMMIT;
 
 DELETE FROM payment ;
 DELETE FROM rental ;
@@ -31,6 +33,8 @@ DELETE FROM address ;
 DELETE FROM city ;
 DELETE FROM country ;
 DELETE FROM language ;
+
+COMMIT;
 
 ALTER TABLE staff ADD CONSTRAINT fk_staff_address FOREIGN KEY (address_id) REFERENCES address (address_id) ON UPDATE CASCADE;
 ALTER TABLE staff ADD CONSTRAINT fk_staff_store FOREIGN KEY (store_id) REFERENCES store (store_id) ON UPDATE CASCADE;
